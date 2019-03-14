@@ -38,6 +38,35 @@
 
 ## 4. Multispectral conditional Generative Adversarial Networks (McGANs) 
 
+- **input**: four channels RGB-NIR images (NIR: near-infrared band)
+
+- **output**: the predicted RGB image after cloud removal  & the predicted RGB image after cloud removal 
+
+- **Network Architecture **: 
+  - 生成器结构
+
+    ![net](./net.png)
+
+  - McGANs网络结构
+
+    ![McGANs](./net_McGANs.png)
+
+    |      C      |          B          |     R      |    D    |       ()内数字       |
+    | :---------: | :-----------------: | :--------: | :-----: | :------------------: |
+    | Convolution | Batch Normalization | Leaky ReLU | Dropout | number, size, stride |
+
+  - objective function
+
+    ![G](./G.png)
+
+    其中，cGAN的目标函数如下。
+
+    ![LcGAN](./LcGAN.png)
+
+    L1 loss function of the Generator 。$x^2$
+
+    ![L1](./L1.png)
+
 ## 5. Evaluation Results 
 
 ## 6. Conclusion 
