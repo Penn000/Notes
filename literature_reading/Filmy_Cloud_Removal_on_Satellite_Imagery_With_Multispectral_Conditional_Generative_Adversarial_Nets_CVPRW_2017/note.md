@@ -12,13 +12,22 @@
 
 ## 1. Introduction
 
+**Goal**
+
+- Remove clouds and generate visible light images from the multispectral images 
+
+**Methodology**
+
+- Generate the training data by synthesizing cloud obscured images 
+- Improve the bias of the training dataset using t-SNE 
+
 ![overview](./overview.png)
 
 ## 2. Related Work
 
 ## 3. Dataset Generation for Cloud Removal 
 
-用于云去除的数据集生成
+数据来源： **WorldView-2卫星**（能够提供0.5米全色图像和1.8米分辨率的多光谱图像）
 
 ### 3.1 Synthesis of cloud-obscured images 
 
