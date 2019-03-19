@@ -35,7 +35,7 @@
 
 1. Simulated cloud using **Perlin noise**.(使用Perlin噪声的模拟云)
 
-2. Merged image with the cloud by **alpha blending**.(通过alpha混合将图像与云合并) 
+2. Merged image with the cloud by **alpha blending**.(通过alpha blending算法将图像与云合并) 
 
    > **alpha blending**：是按照“Alpha”混合向量的值来混合源像素和目标像素的一种图像处理技术。Alpha混合向量一般表示了图片的透明度。
 
@@ -59,7 +59,7 @@ the predicted RGB image after cloud removal  & the predicted RGB image after clo
 
 ### Network Architecture
 
-#### 生成器结构
+#### Generator结构
 
 ![net](./net.png)
 
