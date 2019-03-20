@@ -35,11 +35,11 @@
 
 1. Simulated cloud using **Perlin noise**.(使用Perlin噪声的模拟云)
 
-2. Merged image with the cloud by **alpha blending**.(通过alpha blending算法将图像与云合并) 
+2. Then the simulated clouds are combined with the <u>RGB images</u> by **alpha blending** to generate obscured images. (通过alpha blending算法将图像与云合并，**note**:按作者意思，云层仅与RGB图像混合) 
 
    > **alpha blending**：是按照“Alpha”混合向量的值来混合源像素和目标像素的一种图像处理技术。Alpha混合向量一般表示了图片的透明度。
 
-3. **Color correction**.(色彩校正)
+3. Then generated image is further processed by **Color correction**.(色彩校正)
 
 ![img](./synthsis.png)
 
@@ -47,7 +47,7 @@
 
 使用t-SNE均匀化数据集
 
-大致意思是为了降低网络对图像地物类别的敏感性。
+大致意思是为了降低网络对图像地物类别的敏感性，按地物类别进行均匀采样。
 
 ## 4. Multispectral conditional Generative Adversarial Networks (McGANs) 
 
@@ -93,7 +93,15 @@ $$
 
 ## 5. Evaluation Results 
 
-**NIR-cGANs**: 训练集仅以NIR图像作为cGANs的输入。
+### 实验设置：
+
+- **训练集**：2000组图像用于训练，每组包含
+  - 一张无云图像(ground truth)
+  - 一张模拟云图像
+  - 一张合成有云图像
+  - 一张NIR图像。
+- **minibatch**：1
+- **epochs**：500
 
 ### McGANs在合成云图像上的预测结果
 
@@ -104,6 +112,8 @@ $$
 ### McGANs在真实云图像上的预测结果
 
 从左到右依次为合成云图像，NIR图像，McGANs去云后的图像，NIR-cGANs去云后的图像，云图像。
+
+**NIR-cGANs**: 训练集仅以NIR图像作为cGANs的输入，以无云图像作为ground truth
 
 ![res2](res2.png)
 
