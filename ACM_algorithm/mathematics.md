@@ -12,11 +12,11 @@
 
 除法不满足
 
-```math
-(a+b)\%MOD = (a\%MOD + b\%MOD)\%MOD
+$$
+(a+b)\%MOD = (a\%MOD + b\%MOD)\%MOD \\
 
 (a*b)\%MOD = (a\%MOD * b\%MOD)\%MOD
-```
+$$
 
 ## 高精度
 
@@ -25,11 +25,11 @@
 
 ## 快速幂
 
-以 `$log_2(n)$` 的时间复杂度计算
+以 $log_2(n)$ 的时间复杂度计算
 
-```math
+$$
 a^n \% MOD
-```
+$$
 
 ```cpp
 ll qucik_pow(ll a, ll n, ll MOD){
@@ -83,7 +83,7 @@ void getPrime(int n){
 
 * n 至多只存在一个大于 sqrt（n）的素因数（否则两个大于 sqrt（n）的数相乘即大于 n）。这样，我们只需将n所有小于 sqrt（n）的素数从n中除去，剩余的部分必为该大素因数。正是由于这样的原因，我们不必依次测试sqrt（ n）到n的素数，而是在处理完小于sqrt（ n）的素因数时，就能确定是否存在该大素因数，若存在其幂指数也必为 1。
 
-* 对`$n!$`质因数分解，质因子`$p$`的次幂为`$n/p+n/(p*p)+n/(p*p*p)+...$`
+* 对$n!$质因数分解，质因子$p$的次幂为$n/p+n/(p*p)+n/(p*p*p)+...$
 
 ## GCD
 
@@ -105,25 +105,24 @@ int lcm(int a, int b){
 
 * 同余运算
 
-```math
+$$
 a \equiv b \pmod{n} \Leftrightarrow a - kn = b
-```
+$$
 
-返回 `$gcd(a, b)$`
+返回 $gcd(a, b)$
 
-函数ex_gcd所求得的 `$x_0,y_0$` 为下述方程的一组特殊的解
+函数ex_gcd所求得的 $x_0,y_0$为下述方程的一组特殊的解
 
-```math
+$$
 a*x+b*y=gcd(a,b)
-```
+$$
 
 该方程的通解为：
 
-```math
-x=x_0+\frac{b}{gcd}*t
-
+$$
+x=x_0+\frac{b}{gcd}*t \\
 y=y_0+\frac{a}{gcd}*t
-```
+$$
 
 ```cpp
 int ex_gcd(int a, int b, int& x, int& y){
@@ -144,35 +143,35 @@ int ex_gcd(int a, int b, int& x, int& y){
 
 若方程为：
 
-```math
+$$
 a*x+b*y=c
-```
+$$
 
-方程有解的条件是 `$gcd(a,b)|c$`, 即 `$c \% gcd(a, b)=0$`
+方程有解的条件是 $gcd(a,b)|c$, 即 $c \% gcd(a, b)=0$
 
-解法：对 `$a*x+b*y=gcd$` 两边同时乘上 `$\frac{c}{gcd}$`,得：
+解法：对 $a*x+b*y=gcd$两边同时乘上 $\frac{c}{gcd}$,得：
 
-```math
+$$
 a*\frac{c*x_0}{gcd}+b*\frac{c*y_0}{gcd}=c
-```
+$$
 
 所以通解为：
 
-```math
-x = \frac{c}{gcd}*x_0 
+$$
+x = \frac{c}{gcd}*x_0 \\
 
 y = \frac{c}{gcd}*y_0
-```
+$$
 
 方程的最小正整数解：
 
-我们只需要让解得的 `$x$` 不断减 `$\frac{b}{gcd}$`，直到再减就为负数时，所得的x就是我们要的解。 其实这个过程就是模运算，所以最小正整数解就是：
+我们只需要让解得的 $x$ 不断减 $\frac{b}{gcd}$，直到再减就为负数时，所得的x就是我们要的解。 其实这个过程就是模运算，所以最小正整数解就是：
 
-```math
-x = (\frac{c}{gcd}*x_0)mod \frac{b}{gcd} 
+$$
+x = (\frac{c}{gcd}*x_0)mod \frac{b}{gcd} \\
 
 y = (\frac{c}{gcd}*y_0) mod \frac{a}{gcd} 
-```
+$$
 
 ```cpp
 d = gcd(a, b);
@@ -181,21 +180,21 @@ x_ans = ((x*c/d)%(b/d)+(b/d))%(b/d);
 
 改不定方程还有以下形式：
 
-```math
+$$
 a*x \equiv b \pmod{n}
-```
+$$
 
 ---
 
 ## 乘法逆元
 
-```math
+$$
 ax \equiv 1 \pmod{n}
-```
+$$
 
-称 `$x$` 为 `$a$` 关于 `$n$` 的乘法逆元
+称 $x$ 为 $a$关于$n$ 的乘法逆元
 
-存在条件：`$gcd(a,n)=1$`
+存在条件：$gcd(a,n)=1$
 
 ```cpp
 // x即为a对n的逆元
@@ -210,13 +209,13 @@ ll inv(ll a, ll n){
 
 ## 费马小定理
 
-若 `$p$` 是一个素数， `$gcd(a,p)=1$` （因为p是素数，所以a，p显然互质，a!=p），则：
+若 $p$ 是一个素数， $gcd(a,p)=1$ （因为p是素数，所以a，p显然互质，a!=p），则：
 
-```math
-a^{p-1} \equiv 1 \pmod{p}
+$$
+a^{p-1} \equiv 1 \pmod{p} \\
 
 a * a^{p-2} \equiv 1 \pmod{p}
-```
+$$
 
 即 `$a^{p-2}$` 是 `$a$` 对 `$p$` 的逆元。
 
@@ -230,13 +229,13 @@ ll inv(ll a, ll n){
 
 ## 欧拉函数
 
-在数论，对正整数n，欧拉函数 `$\phi(n)$` 是小于n的正整数中与n互质的数的数目
+在数论，对正整数n，欧拉函数 $\phi(n)$是小于n的正整数中与n互质的数的数目
 
-对于n的因数 `$p_1, p_2, ... , p_k$` ，欧拉函数如下：
+对于n的因数 $p_1, p_2, ... , p_k$，欧拉函数如下：
 
-```math
+$$
 phi(n)=n*(1-\frac{1}{p_1})*(1-\frac{1}{p_2})*...*(1-\frac{1}{p_k})
-```
+$$
 
 ```cpp
 int phi(int n){
@@ -259,21 +258,21 @@ int phi(int n){
 
 对任意整数n：
 
-```math
+$$
 a^{\phi(n)} \equiv 1 \pmod{n}
-```
+$$
 
-所以 `$gcd(a, n)=1$` 的条件下， `$a^{\phi(n)-1}$` 是a对n的逆元。
+所以 $gcd(a, n)=1$ 的条件下， $a^{\phi(n)-1}$ 是a对n的逆元。
 
 ---
 
 ## 离散对数
 
-```math
+$$
 a^x \equiv b \pmod{n}
 
 s \equiv log_ab \pmod{n}
-```
+$$
 
 x为在模n下以a为底b的对数
 
